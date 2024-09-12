@@ -87,10 +87,10 @@ export default function CreateBlog(props: Props) {
   };
 
   return (
-    <div className="my-10 bg-neutral-200  flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="my-10   flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-6 bg-white rounded-lg shadow"
+        className="space-y-6 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-4xl p-6  rounded-lg "
       >
         <h2 className="text-2xl sm:text-3xl font-bold text-center">
           Create a New Blog Post
@@ -105,6 +105,7 @@ export default function CreateBlog(props: Props) {
             name="title"
             value={formData.title}
             onChange={handleChange}
+            placeholder="Title of the blog post"
             required
             className="w-full"
           />
@@ -118,6 +119,7 @@ export default function CreateBlog(props: Props) {
             id="description"
             name="description"
             value={formData.description}
+            placeholder="Description of the blog post"
             onChange={handleChange}
             required
             className="w-full"
@@ -152,6 +154,7 @@ export default function CreateBlog(props: Props) {
               name="author"
               value={formData.author}
               onChange={handleChange}
+              placeholder="Author of the blog post"
               required
               className="w-full"
             />
@@ -166,6 +169,7 @@ export default function CreateBlog(props: Props) {
               name="slug"
               value={formData.slug}
               onChange={handleChange}
+              placeholder="slug-of-the-blog-post"
               required
               className="w-full"
             />

@@ -13,18 +13,18 @@ export type BlogType = {
   title: string;
   content: string;
   description: string;
-  image?: string;
+  image: string;
   author: string;
   slug: string;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type BlogCreateType = {
   title: string;
   content: string;
   description: string;
-  image?: string;
+  image: string;
   author: string;
   slug: string;
 };
