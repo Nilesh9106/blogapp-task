@@ -7,7 +7,6 @@ interface IBlog extends Document {
   image?: string;
   author: string;
   slug: string;
-  keywords: string[];
   createdAt?: string;
   updatedAt?: string;
 }
@@ -40,11 +39,6 @@ const BlogSchema: Schema<IBlog> = new Schema(
       unique: true,
       trim: true,
     },
-    keywords: [
-      {
-        type: String,
-      },
-    ],
   },
   { timestamps: true }
 );

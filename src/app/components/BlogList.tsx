@@ -1,5 +1,6 @@
 import { ListBlogType } from "@/types/Blog";
-import { Clock, User } from "lucide-react";
+import { User } from "lucide-react";
+import Link from "next/link";
 
 // This would typically come from an API or database
 
@@ -15,7 +16,8 @@ export default function BlogList({ blogs }: Props) {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {blogs.map((post) => (
-          <div
+          <Link
+            href={`/blog/${post.slug}`}
             key={post._id}
             className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
           >
@@ -45,7 +47,7 @@ export default function BlogList({ blogs }: Props) {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

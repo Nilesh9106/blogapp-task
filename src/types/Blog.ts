@@ -16,7 +16,15 @@ export type BlogType = {
   image?: string;
   author: string;
   slug: string;
-  keywords: string[];
   createdAt?: string;
   updatedAt?: string;
+};
+
+export type BlogCreateType = {
+  title: string;
+  content: string;
+  description: string;
+  image?: string;
+  author: string;
+  slug: string;
 };
