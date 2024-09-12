@@ -1,3 +1,4 @@
+"use client";
 import CreateBlog from "@/app/components/CreateBlog";
 import { BlogHelper } from "@/app/helpers/Blog";
 import { BlogCreateType } from "@/types/Blog";
