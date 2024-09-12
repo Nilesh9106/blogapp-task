@@ -61,11 +61,23 @@ export default function CreateBlog(props: Props) {
     }
   );
   const [loading, setLoading] = useState(false);
+  function toSlug(str: string): string {
+    return str
+      .toLowerCase()
+      .trim()
+      .replace(/[\s_]+/g, "-")
+      .replace(/[^\w-]+/g, "")
+      .replace(/--+/g, "-");
+  }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    if (name === "slug") {
+      setFormData((prev) => ({ ...prev, [name]: toSlug(value) }));
+      return;
+    }
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -73,16 +85,8 @@ export default function CreateBlog(props: Props) {
     setLoading(true);
     e.preventDefault();
     console.log(formData);
-
+    formData.slug = formData.slug.replace(/^-+|-+$/g, "");
     await props.onSubmit(formData);
-    setFormData({
-      title: "",
-      content: "",
-      description: "",
-      image: "",
-      author: "",
-      slug: "",
-    });
     setLoading(false);
   };
 
@@ -193,7 +197,7 @@ export default function CreateBlog(props: Props) {
         </div>
 
         <Button type="submit" className="w-full">
-          {loading ? "Loading..." : "Submit"}
+          {loading ? "Loading..." : props.isUpdate ? "Update" : "Create"}
         </Button>
       </form>
     </div>

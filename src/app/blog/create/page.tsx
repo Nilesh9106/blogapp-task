@@ -2,7 +2,7 @@
 import CreateBlog from "@/components/CreateBlog";
 import { BlogHelper } from "@/helpers/Blog";
 import { BlogCreateType } from "@/types/Blog";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import React from "react";
 
 const Page = () => {

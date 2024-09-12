@@ -47,6 +47,26 @@ export class BlogHelper {
     }
   }
 
+  static async updateBlog(slug: string, blog: BlogCreateType) {
+    try {
+      const res = await fetch(`/api/blog/${slug}`, {
+        method: "PUT",
+        body: JSON.stringify(blog),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      if (data.error) {
+        toast.error(data.error);
+        throw new Error(data.error);
+      }
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   static async deleteBlog(slug: string) {
     try {
       const res = await fetch(`/api/blog/${slug}`, {

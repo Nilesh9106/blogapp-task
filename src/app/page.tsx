@@ -26,7 +26,7 @@ const Page = () => {
   return (
     <div>
       {loading && <div className="my-4 text-center">Loading...</div>}
-      <BlogList blogs={blogs} />
+      {!loading && <BlogList blogs={blogs} />}
     </div>
   );
 };
