@@ -1,6 +1,6 @@
 "use client";
-import BlogList from "@/app/components/BlogList";
-import { BlogHelper } from "@/app/helpers/Blog";
+import BlogList from "@/components/BlogList";
+import { BlogHelper } from "@/helpers/Blog";
 import { ListBlogType } from "@/types/Blog";
 import React, { useEffect, useState } from "react";
 
@@ -11,7 +11,7 @@ const Page = () => {
     try {
       setLoading(true);
       const blogs: ListBlogType[] = await BlogHelper.getBlogs();
-      setBlogs(blogs);
+      setBlogs(blogs ?? []);
     } catch (error) {
       console.log(error);
     } finally {
@@ -25,7 +25,7 @@ const Page = () => {
 
   return (
     <div>
-      {loading && <div>Loading...</div>}
+      {loading && <div className="my-4 text-center">Loading...</div>}
       <BlogList blogs={blogs} />
     </div>
   );

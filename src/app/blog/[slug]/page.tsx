@@ -1,7 +1,7 @@
 "use client";
 
-import BlogPage from "@/app/components/BlogPage";
-import { BlogHelper } from "@/app/helpers/Blog";
+import BlogPage from "@/components/BlogPage";
+import { BlogHelper } from "@/helpers/Blog";
 import { BlogType } from "@/types/Blog";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -14,7 +14,9 @@ const Page = () => {
     try {
       setLoading(true);
       const blog: BlogType = await BlogHelper.getBlog(slug);
-      setBlog(blog);
+      if (blog) {
+        setBlog(blog);
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -28,7 +30,7 @@ const Page = () => {
 
   return (
     <div>
-      {loading && <div>Loading...</div>}
+      {loading && <div className="my-4 text-center">Loading...</div>}
       {!loading && blog && <BlogPage blog={blog} />}
     </div>
   );

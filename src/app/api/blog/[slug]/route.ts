@@ -9,9 +9,11 @@ export const GET = async (
 ) => {
   try {
     await dbConnect();
-    const blog = await BlogModel.findById(params.slug);
+    const blog = await BlogModel.findOne({ slug: params.slug });
     return NextResponse.json(blog);
   } catch (error) {
+    console.log(error);
+
     return NextResponse.json(
       { error: (error as Error).message },
       { status: 500 }
@@ -29,6 +31,7 @@ export const DELETE = async (
     const blog = await BlogModel.findByIdAndDelete(params.slug);
     return NextResponse.json(blog);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: (error as Error).message },
       { status: 500 }
