@@ -2,7 +2,6 @@ import { dbConnect } from "@/lib/db";
 import BlogModel from "@/models/BlogModel";
 import { NextRequest, NextResponse } from "next/server";
 
-// create api
 export const POST = async (req: NextRequest) => {
   try {
     await dbConnect();
